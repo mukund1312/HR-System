@@ -3,9 +3,6 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from app.db.database import Base
-from app.db import models
-
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
@@ -24,10 +21,16 @@ if config.config_file_name is not None:
 
 # add your model's MetaData object here
 # for 'autogenerate' support
+# Import Base first, then all models so they register with Base.metadata
 from app.db.database import Base
 
+# Import all models explicitly to ensure they are registered with Base.metadata
+from app.db.models.user import User
+from app.db.models.role import Role
+from app.db.models.candidate import Candidate
+from app.db.models.candidate_state_history import CandidateStateHistory
+
 target_metadata = Base.metadata
-# target_metadata = None
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
