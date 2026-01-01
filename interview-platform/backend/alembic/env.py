@@ -30,6 +30,13 @@ from app.db.models.role import Role
 from app.db.models.candidate import Candidate
 from app.db.models.candidate_state_history import CandidateStateHistory
 
+from alembic import context
+from app.core.config import settings
+config = context.config
+
+database_url = settings.DATABASE_URL
+config.set_main_option("sqlalchemy.url", database_url)
+
 target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,

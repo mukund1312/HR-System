@@ -7,5 +7,6 @@ class Settings:
     JWT_SECRET = os.getenv("JWT_SECRET")
     JWT_ALGORITHM = os.getenv("JWT_ALGORITHM")
     JWT_EXPIRE_MINUTES = int(os.getenv("JWT_EXPIRE_MINUTES"))
+    DATABASE_URL = str(os.getenv("DATABASE_URL"))
 
 settings = Settings()

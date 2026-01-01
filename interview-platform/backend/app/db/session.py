@@ -1,8 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-DATABASE_URL = "postgresql+psycopg2://mukundumashankar@localhost:5432/interview_platform"
+from app.core.config import settings
 
+DATABASE_URL = settings.DATABASE_URL
 engine = create_engine(
     DATABASE_URL,
     pool_pre_ping=True
